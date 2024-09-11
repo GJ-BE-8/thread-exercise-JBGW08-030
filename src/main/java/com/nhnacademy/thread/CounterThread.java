@@ -25,7 +25,7 @@ public class CounterThread extends Thread {
 
     public CounterThread(String name, long countMaxSize) {
         //TODO#2 name <-- null 이거나 공백 문자열이면 IllegalArgumentException이 발생 합니다.
-        if (name == null || name == "") {
+        if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException();
         }
         //TODO#3 countMaxSize <=0 이면 IllegalArgumentException이 발생 합니다.
