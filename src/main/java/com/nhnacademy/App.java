@@ -47,10 +47,11 @@ public class App
         //TODO#9 main thread가 실행 후 20초 후 threadA, threadB 종료될 수 있도록 interrupt 발생 시킵니다.
         try {
             Thread.sleep(20000);
-            Thread.interrupted();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+        threadA.interrupt();
+        threadB.interrupt();
         //TODO#10 main Thread는 threadA와 threadB의 상태가 terminated가 될 때 까지 대기 합니다. 즉 threadA, threadB가 종료될 때 까지 대기(양보) 합니다.
         while(threadA.getState() != Thread.State.TERMINATED || threadB.getState() != Thread.State.TERMINATED){
             Thread.yield();
