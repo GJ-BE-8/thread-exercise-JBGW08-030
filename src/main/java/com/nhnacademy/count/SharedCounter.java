@@ -40,10 +40,12 @@ public class SharedCounter {
          */
         try{
             semaphore.acquire();
+            return count;
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } finally {
             semaphore.release();
-        } catch (InterruptedException e) {}
-
-        return count;
+        }
     }
 
     public long increaseAndGet(){
@@ -53,9 +55,13 @@ public class SharedCounter {
         try{
             semaphore.acquire();
             count = count + 1;
+            return count;
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } finally {
             semaphore.release();
-        } catch (InterruptedException e) {}
-        return count;
+        }
+
     }
 
     public long decreaseAndGet(){
@@ -64,8 +70,12 @@ public class SharedCounter {
         */try{
             semaphore.acquire();
             count = count - 1;
+            return count;
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } finally {
             semaphore.release();
-        } catch (InterruptedException e) {}
-        return count;
+        }
+
     }
 }
