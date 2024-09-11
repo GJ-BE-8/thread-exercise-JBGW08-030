@@ -51,7 +51,7 @@ public class CounterThread extends Thread {
         try {
             do {
                 Thread.sleep(1000);
-                log.info("thread name : {}, count : {}", this.getName(), count++);
+                log.info("thread name : {}, count : {}", this.getName(), ++count);
 
             } while (count < countMaxSize);
         } catch (InterruptedException e) {
