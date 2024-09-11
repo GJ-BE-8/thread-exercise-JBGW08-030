@@ -52,9 +52,9 @@ public class SharedCounter {
         */
         try{
             semaphore.acquire();
+            count = count + 1;
             semaphore.release();
         } catch (InterruptedException e) {}
-        count = count + 1;
         return count;
     }
 
@@ -63,9 +63,9 @@ public class SharedCounter {
           1-2 처럼 semaphore를 이용해서 동기화할 수 있도록 구현 합니다.
         */try{
             semaphore.acquire();
+            count = count - 1;
             semaphore.release();
         } catch (InterruptedException e) {}
-        count = count - 1;
         return count;
     }
 }
